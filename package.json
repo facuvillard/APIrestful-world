@@ -1,28 +1,18 @@
 {
-  "name": "api-rest",
+  "name": "world-api",
   "version": "1.0.0",
-  "description": "Mi primer API REST",
+  "description": "apiRest sobre DB World",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/facuvillard/tutorialNodeJS.git"
-  },
-  "keywords": [
-    "APÏ",
-    "REST",
-    "NodeJS"
-  ],
   "author": "Facundo Villard",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/facuvillard/tutorialNodeJS/issues"
-  },
-  "homepage": "https://github.com/facuvillard/tutorialNodeJS#readme",
   "dependencies": {
-    "body-parser": "^1.19.0",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "mysql": "^2.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.3"
   }
 }

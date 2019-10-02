@@ -1,33 +1,26 @@
-var express = require('express')
-var http = require('http')
-var app = express()
+var express = require('express');
+app = express();
+bodyParser = require('body-parser');
+port = process.env.PORT || 3000;
 
-var users = ['oscar', 'juan', 'marcos']
+const mysql = require('mysql');
 
-app.get('/users', function(req,res){
-    res.send(users)
+const mc = mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    password: 'buchin',
+    database: 'world'
 })
 
-app.post('/users', function(req,res){
-    users.push('Facundo Villard')
-    res.send('Nuevo usuario agregado')
-})
 
-app.get('/users/:username', function(req,res){
-    if (users.indexOf(req.params.username) != -1)
-    {
-        res.send('hola' + req.params.username)
-    } 
-    else
-    {
-        res.send('No existe ese nobmre')
-    }
-})
+mc.connect();
 
-app.get('/', function(req, res) {
-    res.status(200).send("Bienvenido a mi API RESTful")
-})
+console.log('Servidor apiRestful inciadio en el puerto: ' + port);
 
-http.createServer(app).listen(8001, function(){
-    console.log('Servidor inciado en http://localhost:8001');
-});
+app.use(bodyParser.urlencoded({extended:true}));
+app.use(bodyParser.json());
+
+app.listen(port);
+var countriesRoutes = require('./Routes/countries.js');
+
+countriesRoutes(app);
