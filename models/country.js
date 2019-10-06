@@ -1,7 +1,7 @@
 /* jshint indent: 2 */
 
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('country', {
+  var country = sequelize.define('country', {
     code: {
       type: DataTypes.CHAR(3),
       allowNull: false,
@@ -90,11 +90,10 @@ module.exports = function(sequelize, DataTypes) {
   }, {
     tableName: 'country',
     timestamps : false
-  }, {
-    classMethods: {
-      associate: function(models) {
-        this.hasMany(models.city);
-      }
-    }
   });
+  
+  country.associate = function(models){
+    country.hasMany(models.city)
+  }
+  return country;
 };

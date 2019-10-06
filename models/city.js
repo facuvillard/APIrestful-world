@@ -1,7 +1,6 @@
 /* jshint indent: 2 */
-
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('city', {
+  var city = sequelize.define('city', {
     id: {
       type: DataTypes.INTEGER(11),
       allowNull: false,
@@ -40,11 +39,12 @@ module.exports = function(sequelize, DataTypes) {
   }, {
     tableName: 'city',
     timestamps: false
-  }, {
-    classMethods: {
-      associate: function(models) {
-        this.belongsTo(models.country);
-      }
-    }
   });
+  
+  city.associate = function(models) {
+    city.belongsTo(models.country, {foreignKey : 'countryCode'})
+  };
+
+  return city;
 };
+

@@ -1,10 +1,11 @@
 var express = require('express')
 var router = express.Router()
 var model = require('../models/index')
+var country = require('../models').country;
 
 //Get all cities in DB
 router.get('/', function(req, res, next) {
-    model.city.findAll({}).then(cities => res.json(cities))
+    model.city.findAll({include : [country]}).then(cities => res.json(cities))
 })
 
 //Get city by id
