@@ -38,11 +38,12 @@ module.exports = function(sequelize, DataTypes) {
       field: 'Population'
     }
   }, {
-    tableName: 'city'
+    tableName: 'city',
+    timestamps: false
   }, {
     classMethods: {
       associate: function(models) {
-        //association tables can be defined here
+        this.belongsTo(models.country);
       }
     }
   });

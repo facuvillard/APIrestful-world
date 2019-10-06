@@ -88,11 +88,12 @@ module.exports = function(sequelize, DataTypes) {
       field: 'Code2'
     }
   }, {
-    tableName: 'country'
+    tableName: 'country',
+    timestamps : false
   }, {
     classMethods: {
       associate: function(models) {
-        //associations here
+        this.hasMany(models.city);
       }
     }
   });

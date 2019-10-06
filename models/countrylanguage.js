@@ -33,7 +33,8 @@ module.exports = function(sequelize, DataTypes) {
       field: 'Percentage'
     }
   }, {
-    tableName: 'countrylanguage'
+    tableName: 'countrylanguage',
+    timestamps: false,
   },{
     classMethods: {
       associate: function(models) {
